@@ -36,6 +36,36 @@
     --radius: 0.9rem;
   }
 
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 210 33% 98%;
+
+    --card: 220 20% 14%;
+    --card-foreground: 210 33% 98%;
+
+    --popover: 220 20% 14%;
+    --popover-foreground: 210 33% 98%;
+
+    --primary: 200 65% 64%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 152 55% 67%;
+    --secondary-foreground: 220 20% 14%;
+
+    --muted: 220 20% 20%;
+    --muted-foreground: 215 16% 70%;
+
+    --accent: 152 55% 67%;
+    --accent-foreground: 220 20% 14%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 200 65% 64%;
+  }
+
   * {
     @apply border-border;
   }
@@ -81,7 +111,7 @@
   
   /* Glass morphism effects */
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+    @apply bg-white/80 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10;
   }
   
   .glass-card {
