@@ -3,13 +3,16 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { BookOpen, Users, FileText, MessageSquare, ShieldAlert, Activity } from 'lucide-react';
+import { BookOpen, Users, FileText, MessageSquare, ShieldAlert, Activity, PhoneCall, Globe, Shield, Brain, Heart, AlertTriangle, Smile, HandHelping } from 'lucide-react';
 
 const Resources = () => {
   const location = useLocation();
   const recognizingRef = useRef<HTMLDivElement>(null);
   const networksRef = useRef<HTMLDivElement>(null);
   const safetyRef = useRef<HTMLDivElement>(null);
+  const helplinesRef = useRef<HTMLDivElement>(null);
+  const onlineRef = useRef<HTMLDivElement>(null);
+  const legalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -26,6 +29,12 @@ const Resources = () => {
           networksRef.current.scrollIntoView({ behavior: 'smooth' });
         } else if (hash === 'safety' && safetyRef.current) {
           safetyRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (hash === 'helplines' && helplinesRef.current) {
+          helplinesRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (hash === 'online' && onlineRef.current) {
+          onlineRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (hash === 'legal' && legalRef.current) {
+          legalRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 500);
     }
@@ -68,6 +77,36 @@ const Resources = () => {
             "Frequent headaches, stomachaches, or faking illness",
             "Changes in eating habits or difficulty sleeping"
           ]
+        },
+        {
+          title: "Neglect",
+          description: "Neglect is the failure to provide for a child's basic needs, including food, clothing, shelter, medical care, education, supervision, and emotional nurturing.",
+          signs: [
+            "Consistently dirty or inappropriate clothing",
+            "Frequent absences from school",
+            "Lack of medical or dental care when needed",
+            "Being frequently unsupervised or left alone"
+          ]
+        },
+        {
+          title: "Sexual Abuse",
+          description: "Sexual abuse includes any sexual activity imposed on a child, including touching and non-touching offenses.",
+          signs: [
+            "Knowledge of sexual acts inappropriate for their age",
+            "Avoiding certain people or places without explanation",
+            "Sudden changes in behavior or personality",
+            "Sexual behavior or language that is not age-appropriate"
+          ]
+        },
+        {
+          title: "Digital/Online Abuse",
+          description: "Online abuse includes cyberbullying, sending threatening messages, sharing private information or images without consent, and other harmful online behaviors.",
+          signs: [
+            "Sudden disinterest in devices or social media",
+            "Becoming anxious when receiving notifications",
+            "Deleting social media accounts or changing privacy settings",
+            "Withdrawing from online friends and activities"
+          ]
         }
       ]
     },
@@ -106,6 +145,26 @@ const Resources = () => {
             "Community mental health centers",
             "Social services agencies",
             "Helplines and crisis text services"
+          ]
+        },
+        {
+          title: "Building Your Support Network",
+          description: "Steps to create and maintain a strong support network.",
+          points: [
+            "Identify people you trust and feel comfortable talking to",
+            "Practice asking for help with small issues before bigger ones",
+            "Maintain regular contact with supportive people in your life",
+            "Be open about your feelings and needs when appropriate"
+          ]
+        },
+        {
+          title: "Support Groups",
+          description: "Joining a support group can connect you with others who have similar experiences.",
+          points: [
+            "School-based support groups",
+            "Community center programs",
+            "Hospital or therapy-led groups",
+            "Online forums and virtual support communities"
           ]
         }
       ]
@@ -148,6 +207,220 @@ const Resources = () => {
             "If someone is threatening to harm you",
             "If you witness someone else being abused",
             "If you have no safe place to go"
+          ]
+        },
+        {
+          title: "School Safety Planning",
+          description: "Specific strategies for staying safe at school if you're experiencing bullying or harassment.",
+          steps: [
+            "Identify trusted teachers or staff you can go to for help",
+            "Stay in groups when possible to avoid isolation",
+            "Know the locations of safe spaces like counseling offices",
+            "Document incidents of bullying or harassment",
+            "Report serious threats to school officials immediately"
+          ]
+        },
+        {
+          title: "Emotional Safety Planning",
+          description: "Strategies to protect your emotional wellbeing during difficult situations.",
+          tips: [
+            "Develop healthy coping mechanisms like journaling or exercise",
+            "Practice self-care routines that help you feel calm and centered",
+            "Identify triggering situations and plan responses in advance",
+            "Create a list of positive affirmations or supportive messages",
+            "Know when and how to disengage from harmful interactions"
+          ]
+        }
+      ]
+    },
+    {
+      id: 'helplines',
+      ref: helplinesRef,
+      title: "Helplines & Contacts",
+      icon: <PhoneCall className="w-8 h-8 text-guardian-blue" />,
+      description: "A comprehensive directory of national and local helplines and support services for various situations.",
+      content: [
+        {
+          title: "Crisis Hotlines",
+          description: "24/7 hotlines for immediate support during crises.",
+          points: [
+            "National Suicide Prevention Lifeline: 988 or 1-800-273-8255",
+            "Crisis Text Line: Text HOME to 741741",
+            "Childhelp National Child Abuse Hotline: 1-800-422-4453",
+            "National Domestic Violence Hotline: 1-800-799-7233",
+            "Trevor Project LGBTQ Youth: 1-866-488-7386"
+          ]
+        },
+        {
+          title: "Youth-Specific Resources",
+          description: "Resources specifically designed for children and teens.",
+          points: [
+            "Boys Town National Hotline: 1-800-448-3000",
+            "National Runaway Safeline: 1-800-786-2929",
+            "TEEN LINE: 1-800-852-8336 or text TEEN to 839863",
+            "Youth.gov: Resources for youth programs and services",
+            "StopBullying.gov: Information and resources about bullying"
+          ]
+        },
+        {
+          title: "Mental Health Resources",
+          description: "Support for mental health concerns including anxiety, depression, and trauma.",
+          points: [
+            "SAMHSA's National Helpline: 1-800-662-4357",
+            "National Alliance on Mental Illness (NAMI) Helpline: 1-800-950-6264",
+            "Association for Children's Mental Health",
+            "Mental Health America",
+            "Psychology Today's Therapist Directory"
+          ]
+        },
+        {
+          title: "Online Support Resources",
+          description: "Websites and online platforms offering support and information.",
+          points: [
+            "7 Cups: Online therapy and free emotional support",
+            "Talkspace: Online therapy platform",
+            "Calm Harm App: Helps manage self-harm urges",
+            "ReachOut Forums: Peer support community",
+            "Teen Line Online: Message board and resources for teens"
+          ]
+        },
+        {
+          title: "School-Based Resources",
+          description: "Support services available through educational institutions.",
+          points: [
+            "School counselors and psychologists",
+            "School social workers",
+            "Student assistance programs",
+            "School-based health centers",
+            "Peer support programs"
+          ]
+        }
+      ]
+    },
+    {
+      id: 'online',
+      ref: onlineRef,
+      title: "Online Safety",
+      icon: <Globe className="w-8 h-8 text-guardian-blue" />,
+      description: "Comprehensive guidance on staying safe in digital spaces and protecting your privacy online.",
+      content: [
+        {
+          title: "Social Media Safety",
+          description: "Best practices for using social media platforms safely.",
+          tips: [
+            "Keep profiles private and only accept friend requests from people you know",
+            "Be cautious about sharing personal information like your location, school, or home address",
+            "Think before posting: once something is online, it can be hard to completely remove",
+            "Use strong passwords and enable two-factor authentication",
+            "Regularly review and update privacy settings on all platforms"
+          ]
+        },
+        {
+          title: "Cyberbullying Response",
+          description: "Steps to take if you experience harassment or bullying online.",
+          steps: [
+            "Don't respond to or engage with the bully",
+            "Take screenshots as evidence of the bullying",
+            "Block the person on the platform",
+            "Report the behavior to the platform",
+            "Talk to a trusted adult about what you're experiencing"
+          ]
+        },
+        {
+          title: "Digital Privacy Protection",
+          description: "Ways to safeguard your personal information online.",
+          tips: [
+            "Use unique, strong passwords for each account",
+            "Be wary of public Wi-Fi networks for sensitive activities",
+            "Regularly check and adjust privacy settings on devices and apps",
+            "Be cautious about apps that request excessive permissions",
+            "Use secure messaging apps for private conversations"
+          ]
+        },
+        {
+          title: "Recognizing Online Predators",
+          description: "Warning signs of potentially dangerous online relationships.",
+          signs: [
+            "Someone who quickly tries to establish a close relationship",
+            "Asking to keep conversations secret",
+            "Requesting personal information or photos",
+            "Suggesting moving communication to private platforms",
+            "Pressuring you to do things that make you uncomfortable"
+          ]
+        },
+        {
+          title: "Healthy Tech Habits",
+          description: "Creating a balanced relationship with technology and social media.",
+          tips: [
+            "Set boundaries for screen time and digital-free zones",
+            "Take regular breaks from social media",
+            "Be mindful of how online content affects your mood and self-image",
+            "Focus on meaningful connections rather than follower counts",
+            "Use tools to monitor and manage your screen time"
+          ]
+        }
+      ]
+    },
+    {
+      id: 'legal',
+      ref: legalRef,
+      title: "Legal Information",
+      icon: <Shield className="w-8 h-8 text-guardian-blue" />,
+      description: "Age-appropriate information about legal rights and protections for minors facing abuse or bullying situations.",
+      content: [
+        {
+          title: "Children's Rights",
+          description: "Basic legal rights that all children have regardless of their circumstances.",
+          points: [
+            "Right to be protected from abuse and neglect",
+            "Right to education",
+            "Right to medical care",
+            "Right to be heard in matters affecting them",
+            "Right to privacy appropriate to their age"
+          ]
+        },
+        {
+          title: "Reporting Abuse",
+          description: "The legal process of reporting child abuse or neglect.",
+          steps: [
+            "Anyone can report suspected child abuse to Child Protective Services",
+            "Some professionals (teachers, doctors) are mandated reporters",
+            "Reports can usually be made anonymously",
+            "Providing specific details helps investigators respond appropriately",
+            "False reporting is illegal, but good faith reports are protected"
+          ]
+        },
+        {
+          title: "School Bullying Laws",
+          description: "Legal protections against bullying in educational settings.",
+          points: [
+            "All states have anti-bullying laws or policies",
+            "Schools are required to have procedures for reporting bullying",
+            "Some forms of bullying may be considered harassment under civil rights laws",
+            "Schools must take action when bullying is reported",
+            "Parents have rights to advocate for their children's safety at school"
+          ]
+        },
+        {
+          title: "Cyberbullying Laws",
+          description: "Legal protections against online harassment and bullying.",
+          points: [
+            "Many states have specific laws addressing cyberbullying",
+            "Severe cyberbullying can sometimes be prosecuted under criminal laws",
+            "Schools may have authority to address cyberbullying even if it occurs off-campus",
+            "Online platforms have policies against harassment and methods to report it",
+            "Evidence of cyberbullying should be preserved through screenshots"
+          ]
+        },
+        {
+          title: "Emancipation & Legal Independence",
+          description: "Information about when and how minors can legally make decisions for themselves.",
+          points: [
+            "Emancipation is a legal process that gives minors many adult rights before age 18",
+            "Requirements for emancipation vary by state",
+            "Some healthcare decisions can be made by minors without parental consent",
+            "In emergency situations, minors may consent to certain services",
+            "Legal aid organizations can provide guidance to minors about their rights"
           ]
         }
       ]

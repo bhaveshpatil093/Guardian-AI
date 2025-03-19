@@ -1,5 +1,5 @@
 
-import { BookOpen, Users, FileText, ExternalLink } from 'lucide-react';
+import { BookOpen, Users, FileText, PhoneCall, Globe, Shield, Brain, Heart, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAnimatedMount } from '@/utils/animations';
 
@@ -24,6 +24,24 @@ const ResourcesSection = () => {
       description: "Guidelines for creating a personal safety plan for different situations.",
       icon: <FileText className="w-6 h-6 text-guardian-blue" />,
       link: "/resources#safety"
+    },
+    {
+      title: "Helplines & Contacts",
+      description: "Directory of national and local helplines and support services.",
+      icon: <PhoneCall className="w-6 h-6 text-guardian-blue" />,
+      link: "/resources#helplines"
+    },
+    {
+      title: "Online Safety",
+      description: "Tips for staying safe online and protecting your digital privacy.",
+      icon: <Globe className="w-6 h-6 text-guardian-blue" />,
+      link: "/resources#online"
+    },
+    {
+      title: "Legal Information",
+      description: "Age-appropriate information about legal rights and protections for minors.",
+      icon: <Shield className="w-6 h-6 text-guardian-blue" />,
+      link: "/resources#legal"
     }
   ];
 
