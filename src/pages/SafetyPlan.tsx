@@ -25,7 +25,7 @@ const defaultSections: SafetyPlanSection[] = [
     prompts: [
       'What thoughts do you experience when you start to feel unsafe?',
       'What emotions signal that you might need help?',
-      'How does your behavior change when you're struggling?'
+      'How does your behavior change when you\'re struggling?'
     ],
     content: '',
   },
