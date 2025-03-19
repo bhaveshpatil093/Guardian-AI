@@ -11,6 +11,8 @@ import Emergency from "./pages/Emergency";
 import NotFound from "./pages/NotFound";
 import Chatbot from "./components/Chatbot/Chatbot";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollProgressBar from "./components/ScrollProgressBar";
+import SafetyCheckDrawer from "./components/SafetyCheckDrawer";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,7 @@ const App = () => (
         <Sonner position="top-right" />
         <BrowserRouter>
           <ScrollToTop />
+          <ScrollProgressBar />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/resources" element={<Resources />} />
@@ -30,6 +33,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Chatbot />
+          <SafetyCheckDrawer />
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
