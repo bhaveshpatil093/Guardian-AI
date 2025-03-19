@@ -1,9 +1,18 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Menu, X } from 'lucide-react';
+import { Shield, Menu, X, ChevronDown } from 'lucide-react';
 import QuickExit from './QuickExit';
 import ThemeToggle from './ThemeToggle';
+import { 
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
+} from "@/components/ui/navigation-menu";
+import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +31,19 @@ const Navbar = () => {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
+
+  const features = [
+    { name: "Mood Tracker", path: "/mood-tracker" },
+    { name: "Breathing Exercises", path: "/breathing-exercises" },
+    { name: "Local Resources", path: "/local-resources" },
+    { name: "Journal", path: "/journal" },
+    { name: "Safety Plan", path: "/safety-plan" },
+    { name: "Community", path: "/community" },
+    { name: "Educational Content", path: "/educational-content" },
+    { name: "Scheduled Check-ins", path: "/scheduled-checkins" },
+  ];
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav 
@@ -44,15 +66,52 @@ const Navbar = () => {
           <Link 
             to="/" 
             className={`transition-all duration-300 hover:text-guardian-blue ${
-              location.pathname === '/' ? 'text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300'
+              isActive('/') ? 'text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300'
             }`}
           >
             Home
           </Link>
+          
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  className={`${isActive('/mood-tracker') || 
+                    isActive('/breathing-exercises') || 
+                    isActive('/journal') || 
+                    isActive('/safety-plan') ? 
+                    'text-guardian-blue' : 
+                    'text-guardian-text-secondary dark:text-gray-300'}`}
+                >
+                  Features
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    {features.map((feature) => (
+                      <li key={feature.path}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            to={feature.path}
+                            className={cn(
+                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                              isActive(feature.path) ? "bg-guardian-blue-light text-guardian-blue" : ""
+                            )}
+                          >
+                            <div className="text-sm font-medium leading-none">{feature.name}</div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+          
           <Link 
             to="/resources" 
             className={`transition-all duration-300 hover:text-guardian-blue ${
-              location.pathname === '/resources' ? 'text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300'
+              isActive('/resources') ? 'text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300'
             }`}
           >
             Resources
@@ -60,7 +119,7 @@ const Navbar = () => {
           <Link 
             to="/emergency" 
             className={`transition-all duration-300 hover:text-guardian-blue ${
-              location.pathname === '/emergency' ? 'text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300'
+              isActive('/emergency') ? 'text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300'
             }`}
           >
             Emergency
@@ -85,19 +144,37 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-guardian-text-primary/95 backdrop-blur-md shadow-md p-4 rounded-b-lg animate-fade-in">
-          <div className="flex flex-col space-y-4 px-2">
+          <div className="flex flex-col space-y-2 px-2">
             <Link 
               to="/" 
               className={`py-2 px-3 rounded-md transition-all duration-300 ${
-                location.pathname === '/' ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
+                isActive('/') ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
               }`}
             >
               Home
             </Link>
+            
+            <div className="py-2 px-3">
+              <div className="font-medium text-guardian-text-primary dark:text-white mb-2">Features</div>
+              <div className="pl-2 space-y-2">
+                {features.map((feature) => (
+                  <Link
+                    key={feature.path}
+                    to={feature.path}
+                    className={`block py-1.5 px-3 rounded-md transition-all duration-300 ${
+                      isActive(feature.path) ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
+                    }`}
+                  >
+                    {feature.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            
             <Link 
               to="/resources" 
               className={`py-2 px-3 rounded-md transition-all duration-300 ${
-                location.pathname === '/resources' ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
+                isActive('/resources') ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
               }`}
             >
               Resources
@@ -105,7 +182,7 @@ const Navbar = () => {
             <Link 
               to="/emergency" 
               className={`py-2 px-3 rounded-md transition-all duration-300 ${
-                location.pathname === '/emergency' ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
+                isActive('/emergency') ? 'bg-guardian-blue-light dark:bg-guardian-blue/20 text-guardian-blue' : 'text-guardian-text-secondary dark:text-gray-300 hover:bg-guardian-blue-light/50 dark:hover:bg-guardian-blue/10'
               }`}
             >
               Emergency

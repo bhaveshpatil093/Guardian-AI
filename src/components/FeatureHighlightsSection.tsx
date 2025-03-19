@@ -116,11 +116,11 @@ const FeatureHighlightsSection = () => {
   ];
   
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-guardian-blue-light/20">
+    <section id="features" className="py-16 bg-gradient-to-b from-background to-guardian-blue-light/20">
       <div className="container px-4 mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-guardian-text-primary mb-4">
-            Guardian AI Features
+            All Guardian AI Features
           </h2>
           <p className="text-guardian-text-secondary max-w-2xl mx-auto">
             Explore our comprehensive set of tools designed to support your wellbeing and safety journey
